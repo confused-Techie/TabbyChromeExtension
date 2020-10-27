@@ -1,0 +1,10 @@
+body {
+  background-color: black;
+  color: black;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 15px;
+  color: white;
+}
