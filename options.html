@@ -1,17 +1,28 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <link rel="stylesheet" href="options.css">
-      <h4>Settings</h4>
+      <link rel="stylesheet" href="extension.css">
+      <link rel="styelsheet" href="bootstrap/boostrap.css">
+      <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+      <link rel="stylesheet" href="bootstrap/bootstrap-grid.css">
+      <link rel="stylesheet" href="bootstrap/bootstrap-grid.min.css">
+      <h4 style="text-align:center;">Tabby Extension Settings</h4>
     </head>
     <body>
+      <div class="card-group">
       <div class="card" style="width: 20rem;">
         <div class="card-body">
           <div class="card-title">
             Server
           </div>
           <div class="card-text">
-            Server settings
+            <label for="serverAddress">Server IP Address</label>
+            <input type="plaintext" id="serverAddress" class="form-control" aria-describedby="serverHelpBlock">
+            <small id="serverHelpBlock" class="form-text text-muted">
+              Must include 'https://' or 'http://' and the Server's Port number.
+            </small>
+
+            <a href="#"><button type="button" class="btn btn-dark" id="serverAddressButton">Save Server</button></a>
           </div>
         </div>
       </div>
@@ -26,6 +37,25 @@
           </div>
         </div>
       </div>
+
+      <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <div class="card-title">
+            Special Thanks!
+          </div>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Rick Anderson</li>
+              <li class="list-group-item">Christopher Laine</li>
+              <li class="list-group-item">The Team behind Open Graph protocol</li>
+              <li class="list-group-item">The Team behind HtmlAgilityPack</li>
+              <li class="list-group-item">The Team behind Feather Icons</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
     </body>
     <script src="options.js"></script>
   </html>

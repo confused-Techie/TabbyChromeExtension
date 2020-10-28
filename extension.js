@@ -1,5 +1,13 @@
+//listen and assign variables right away.
+//chrome.runtime.OnInstalled.addListener(function() {
+//  chrome.storage.sync.set({server: 'SaveYourServer'}, function() {
+  //  console.log('var initialized');
+  //});
+//});
+
 
 var addButton = document.getElementById("addBMClick");
+var apiRequestLoc = "/api?type=new&bm=";
 
 addButton.onclick = function() {
   //this handles sending URI to Tabby
@@ -7,9 +15,11 @@ addButton.onclick = function() {
   var userURI = "";
 
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.storage.sync.get(['server'], function(resultServer) {
     var activeTab = tabs[0];
     userURI = activeTab.url;
-    xhr.open("GET", "https://localhost:44320/api?type=new&bm="+ userURI, true);
+    //xhr.open("GET", "https://localhost:44320/api?type=new&bm="+ userURI, true);
+    xhr.open("GET", resultServer.server + apiRequestLoc + userURI, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) {
         if (xhr.status == 200) {
@@ -26,6 +36,8 @@ addButton.onclick = function() {
       }
     }
     xhr.send();
+
+    });
   });
 }
 
