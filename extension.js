@@ -7,6 +7,7 @@
 
 
 var addButton = document.getElementById("addBMClick");
+var gotoBookMark = document.getElementById("gotoBookMarkClick");
 var apiRequestLoc = "/api?type=new&bm=";
 
 addButton.onclick = function() {
@@ -38,6 +39,16 @@ addButton.onclick = function() {
     xhr.send();
 
     });
+  });
+}
+
+gotoBookMark.onclick = function() {
+  chrome.storage.sync.get(['server'], function(resultServer) {
+    if (resultServer != null) {
+      chrome.tabs.create({'url': resultServer.server});
+    } else {
+      logFailure("Make sure to Set a Server");
+    }
   });
 }
 
