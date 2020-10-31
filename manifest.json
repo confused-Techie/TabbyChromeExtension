@@ -1,6 +1,6 @@
 {
   "name": "Tabby Chrome Extension",
-  "version": "0.2",
+  "version": "1.0",
   "description": "Easily add BookMarks to Tabby from Chrome!",
   "options_page": "options.html",
   "permissions": [
@@ -11,7 +11,19 @@
     "activeTab"
   ],
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/tabbyIcon16.png",
+      "32": "images/tabbyIcon32.png",
+      "48": "images/tabbyIcon48.png",
+      "128": "images/tabbyIcon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/tabbyIcon16.png",
+    "32": "images/tabbyIcon32.png",
+    "48": "images/tabbyIcon48.png",
+    "128": "images/tabbyIcon128.png"
   },
   "manifest_version": 2
 }
