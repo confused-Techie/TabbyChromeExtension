@@ -53,6 +53,13 @@ gotoBookMark.onclick = function() {
 }
 
 function logSuccess() {
+  var d = new Date();
+  chrome.storage.sync.set({lastStatus: "Success", lastStatusTime: d.getTime()}, function() {
+
+    chrome.storage.sync.get(['lastStatusTime'], function(result) {
+      console.log(result.lastStatusTime);
+    });
+  });
   document.getElementById("statusMessage").innerHTML = "Status: Successfully Saved.";
 }
 
