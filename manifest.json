@@ -8,7 +8,8 @@
     "https://*/",
     "http://*/",
     "tabs",
-    "activeTab"
+    "activeTab",
+    "notifications"
   ],
   "browser_action": {
     "default_popup": "popup.html",
