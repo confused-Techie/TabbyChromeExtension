@@ -13,7 +13,7 @@
       <div class="card" style="width: 20rem;">
         <div class="card-body">
           <div class="card-title">
-            Server
+            Server Settings
           </div>
           <div class="card-text">
             <label for="serverAddress">Server IP Address</label>
@@ -23,6 +23,22 @@
             </small>
 
             <a href="#"><button type="button" class="btn btn-dark" id="serverAddressButton">Save Server</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <div class="card-title">
+            Extension Behavior
+          </div>
+          <div class="card-text">
+            <label for="statusTimeout">Last Status Timeout</label>
+            <input type="number" id="statusTimeout" class="form-control" aria-describedby="statusTimeoutHelpBlock" placeholder="15000">
+            <small id="statusTimeoutHelpBlock" class="form-text text-muted">
+              Time in Milliseconds till the last Save Status is forgotten. Default is 15000 or 15 Seconds.
+            </small>
+            <a href="#"><button type="button" class="btn btn-dark" id="statusTimeoutButton">Save Timeout</button></a>
           </div>
         </div>
       </div>
@@ -45,6 +61,23 @@
       </div>
     </div>
 
+    <div class="card" style="width: 20rem;">
+      <div class="card-body">
+        <div class="card-title">
+          Debugging
+        </div>
+        <div class="card-text">
+          <label class="switch">
+            <input type="checkbox" id="debuggingSlider" value="2">
+            <span class="slider round"></span>
+          </label>
+      </div>
+      <div class="card-footer">
+        Useful to test features or issues. Will make Console statements visible.
+      </div>
+    </div>
+  </div>
+
       <div class="card" style="width: 20rem;">
         <div class="card-body">
           <div class="card-title">
@@ -58,6 +91,7 @@
               <li class="list-group-item">The Team behind HtmlAgilityPack</li>
               <li class="list-group-item">The Team behind Feather Icons</li>
               <li class="list-group-item">The Team behind Bootstrap</li>
+              <li class="list-group-item">Artopedia Design</li>
             </ul>
           </div>
         </div>
