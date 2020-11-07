@@ -1,44 +1,34 @@
-//listen and assign variables right away.
-//chrome.runtime.OnInstalled.addListener(function() {
-//  chrome.storage.sync.set({server: 'SaveYourServer'}, function() {
-  //  console.log('var initialized');
-  //});
-//});
+
+window.addEventListener('load', function load(event) {
+  chrome.runtime.sendMessage({server: "reload"}, function(response) {
+    if (response.response == "Success") {
+      logSuccess();
+    } else if (response.response == "Expired") {
+      //do nothing we can let the default text take over
+    } else {
+      logFailure(response.response);
+    }
+  });
+});
 
 
 var addButton = document.getElementById("addBMClick");
 var gotoBookMark = document.getElementById("gotoBookMarkClick");
-var apiRequestLoc = "/api?type=new&bm=";
+
+
 
 addButton.onclick = function() {
-  //this handles sending URI to Tabby
-  var xhr = new XMLHttpRequest();
-  var userURI = "";
 
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.storage.sync.get(['server'], function(resultServer) {
     var activeTab = tabs[0];
-    userURI = activeTab.url;
-    //xhr.open("GET", "https://localhost:44320/api?type=new&bm="+ userURI, true);
-    xhr.open("GET", resultServer.server + apiRequestLoc + userURI, true);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState == 4) {
-        if (xhr.status == 200) {
-          var resp = JSON.parse(xhr.responseText);
-        //parsing this data will help determine if the request was successfull.
-          if (resp == "Success") {
-            logSuccess();
-          } else {
-            logFailure(resp);
-          }
-        } else {
-          logFailure(xhr.status);
-        }
+    chrome.runtime.sendMessage({server: activeTab.url}, function(response) {
+      if (response.response == "Success") {
+        logSuccess();
+      } else {
+        logFailure(response.response);
       }
-    }
-    xhr.send();
-
     });
+
   });
 }
 
@@ -53,15 +43,10 @@ gotoBookMark.onclick = function() {
 }
 
 function logSuccess() {
-  var d = new Date();
-  chrome.storage.sync.set({lastStatus: "Success", lastStatusTime: d.getTime()}, function() {
-
-    chrome.storage.sync.get(['lastStatusTime'], function(result) {
-      console.log(result.lastStatusTime);
-    });
-  });
   document.getElementById("statusMessage").innerHTML = "Status: Successfully Saved.";
 }
+
+
 
 function logFailure(respIssue) {
   document.getElementById("statusMessage").innerHTML = "Status: ERROR: "+ respIssue;
