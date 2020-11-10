@@ -1,6 +1,6 @@
 {
   "name": "Tabby Chrome Extension",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Easily add BookMarks to Tabby from Chrome!",
   "options_page": "options.html",
   "permissions": [
